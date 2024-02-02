@@ -12,9 +12,9 @@ public final class Constants {
         public static final double ROBOT_MASS = 35.4626; // Robot Weight [kg]
         public static final double LOOP_TIME = 0.13; // Control Loop Tick Timing [s]
 
-        private static final Matter BASE = new Matter(new Translation3d(), 22.8141); // Weight Distribution of Base
-        private static final Matter BATTERY = new Matter(new Translation3d(0.2286, 0, 0.1225), 5.8458); // Weight Distribution of Battery
-        private static final Matter BUMPERS = new Matter(new Translation3d(), 6.8027); // Weight Distribution of Bumpers
+        private static final Matter BASE = new Matter(new Translation3d(-0.0057, -0.0037, 0.0813), 21.9116); // Weight Distribution of Base
+        private static final Matter BATTERY = new Matter(new Translation3d(-0.2286, 0, 0.1225), 5.8468); // Weight Distribution of Battery
+        private static final Matter BUMPERS = new Matter(new Translation3d(), 6.8039); // Weight Distribution of Bumpers
 
         public static final List<Matter> WEIGHT_DISTRIBUTION = List.of(BASE, BATTERY, BUMPERS);
     }
