@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.util.Alerts;
+import frc.robot.util.BuildConstants;
 import frc.robot.util.Constants;
 
 /**
@@ -30,8 +32,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit () {
 
+		if (BuildConstants.DIRTY == 1) { Alerts.versionControl.set(true); }
+
 		this.robotContainer = new RobotContainer();
 		this.disabledTimer = new Timer();
+
 		Shuffleboard.getTab("Autonomous").add("Command Scheduler", CommandScheduler.getInstance());
 	}
 
