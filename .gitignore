@@ -166,3 +166,4 @@ bin/
 *.iml
 *.ipr
 *.iws
+src/main/java/frc/robot/util/BuildConstants.java
