@@ -144,6 +144,7 @@ public class Swerve extends SubsystemBase {
     public ChassisSpeeds getRobotVelocity () { return this.swerveDrive.getRobotVelocity(); }
     public ChassisSpeeds getFieldVelocity () { return this.swerveDrive.getFieldVelocity(); }
 
+    public void zeroGyro () { this.swerveDrive.zeroGyro(); }
     public void resetOdometry (Pose2d pose) { this.swerveDrive.resetOdometry(pose); }
     public void setChassisSpeeds (ChassisSpeeds chassisSpeeds) { this.swerveDrive.drive(chassisSpeeds); }
 

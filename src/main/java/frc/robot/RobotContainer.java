@@ -6,7 +6,6 @@ import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RepeatCommand;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.lib.Controller;
 import frc.robot.commands.swerve.BrakeMode;
 import frc.robot.commands.swerve.Drive;
@@ -20,7 +19,7 @@ public class RobotContainer {
 
     private Swerve swerve;
     private Limelight limelight;
-    private CommandXboxController driverOne;
+    private Controller driverOne;
 
     public RobotContainer () {
 
@@ -35,8 +34,6 @@ public class RobotContainer {
 
     private void configureCommands () {
 
-        this.driverOne.leftBumper().whileTrue(new RepeatCommand(new InstantCommand(this.swerve::lock, this.swerve)));
-
         this.swerve.setDefaultCommand(new Drive(
             this.swerve, 
             () -> MathUtil.applyDeadband(-this.driverOne.getHID().getLeftY(), Constants.SwerveConstants.TRANSLATION_DEADBAND),
@@ -46,6 +43,9 @@ public class RobotContainer {
         ));
 
         this.limelight.setDefaultCommand(new TrackAprilTags(this.swerve, this.limelight));
+
+        this.driverOne.x().onTrue(new InstantCommand(this.swerve::zeroGyro, this.swerve));
+        this.driverOne.leftBumper().whileTrue(new RepeatCommand(new InstantCommand(this.swerve::lock, this.swerve)));
     }
 
     public Command getAutonomousCommand () { return this.swerve.getAutonomousCommand(); }
