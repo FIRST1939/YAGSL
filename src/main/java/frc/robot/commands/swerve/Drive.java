@@ -51,8 +51,8 @@ public class Drive extends Command {
         }
 
         double power = Math.sqrt(Math.pow(vx, 2) + Math.pow(vy, 2));
-        vx = rx * power * Math.signum(vx);
-        vy = ry * power * Math.signum(vy);
+        vx = rx * power;
+        vy = ry * power;
 
         Translation2d translation = new Translation2d(vx, vy);
         translation = SwerveMath.limitVelocity(
