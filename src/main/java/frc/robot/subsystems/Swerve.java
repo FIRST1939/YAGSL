@@ -24,8 +24,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import frc.robot.util.Constants;
 import swervelib.SwerveDrive;
+import swervelib.SwerveDriveTest;
 import swervelib.SwerveModule;
 import swervelib.parser.SwerveDriveConfiguration;
 import swervelib.parser.SwerveParser;
@@ -157,4 +159,35 @@ public class Swerve extends SubsystemBase {
     public void lock () { this.swerveDrive.lockPose(); }
     public void setBrakeMode (boolean brake) { this.swerveDrive.setMotorIdleMode(brake); }
     public Command getAutonomousCommand () { return this.autonomousChooser.getSelected(); }
+
+    public Command getDriveSysidRoutine () {
+
+        SysIdRoutine sysIdRoutine = SwerveDriveTest.setDriveSysIdRoutine(
+            Constants.SwerveConstants.DRIVE_SYSID_CONFIG,
+            this, this.swerveDrive,
+            12.0
+        );
+
+        return SwerveDriveTest.generateSysIdCommand(
+            sysIdRoutine, 
+            Constants.SwerveConstants.DRIVE_SYSID_CONFIG.m_timeout.magnitude(), 
+            Constants.SwerveConstants.SYSID_QUASISTATIC_TIMEOUT, 
+            Constants.SwerveConstants.SYSID_DYNAMIC_TIMEOUT
+        );
+    }
+
+    public Command getAngleSysidRoutine () {
+
+        SysIdRoutine sysIdRoutine = SwerveDriveTest.setAngleSysIdRoutine(
+            Constants.SwerveConstants.ANGLE_SYSID_CONFIG,
+            this, this.swerveDrive
+        );
+
+        return SwerveDriveTest.generateSysIdCommand(
+            sysIdRoutine, 
+            Constants.SwerveConstants.ANGLE_SYSID_CONFIG.m_timeout.magnitude(), 
+            Constants.SwerveConstants.SYSID_QUASISTATIC_TIMEOUT, 
+            Constants.SwerveConstants.SYSID_DYNAMIC_TIMEOUT
+        );
+    }
 }
