@@ -171,8 +171,8 @@ public class Swerve extends SubsystemBase {
         return SwerveDriveTest.generateSysIdCommand(
             sysIdRoutine, 
             Constants.SwerveConstants.DRIVE_SYSID_CONFIG.m_timeout.magnitude(), 
-            Constants.SwerveConstants.SYSID_QUASISTATIC_TIMEOUT, 
-            Constants.SwerveConstants.SYSID_DYNAMIC_TIMEOUT
+            Constants.SwerveConstants.DRIVE_SYSID_QUASISTATIC_TIMEOUT, 
+            Constants.SwerveConstants.DRIVE_SYSID_DYNAMIC_TIMEOUT
         );
     }
 
@@ -186,8 +186,8 @@ public class Swerve extends SubsystemBase {
         return SwerveDriveTest.generateSysIdCommand(
             sysIdRoutine, 
             Constants.SwerveConstants.ANGLE_SYSID_CONFIG.m_timeout.magnitude(), 
-            Constants.SwerveConstants.SYSID_QUASISTATIC_TIMEOUT, 
-            Constants.SwerveConstants.SYSID_DYNAMIC_TIMEOUT
+            Constants.SwerveConstants.ANGLE_SYSID_QUASISTATIC_TIMEOUT, 
+            Constants.SwerveConstants.ANGLE_SYSID_DYNAMIC_TIMEOUT
         );
     }
 }
