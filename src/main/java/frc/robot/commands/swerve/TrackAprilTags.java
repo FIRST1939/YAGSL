@@ -24,8 +24,7 @@ public class TrackAprilTags extends Command {
 
         this.swerve.addVisionMeasurement(
             this.limelight.getLatestPose(), 
-            Timer.getFPGATimestamp() - (this.limelight.getLatestDelay() / 1000.0), 
-            this.limelight.getLatestRotation()
+            Timer.getFPGATimestamp() - (this.limelight.getLatestDelay() / 1000.0)
         );
     }
 

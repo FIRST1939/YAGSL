@@ -1,7 +1,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.Timer;
@@ -15,7 +14,6 @@ import frc.robot.util.Alerts;
 public class Limelight extends SubsystemBase {
     
     private Pose2d latestPose;
-    private Rotation3d latestRotation;
     private double latestDelay;
     
     private boolean validMeasurements;
@@ -41,19 +39,9 @@ public class Limelight extends SubsystemBase {
 
         if (this.validMeasurements) {
 
-            if (!DriverStation.getAlliance().isPresent()) {
-
-                this.latestPose = targetingResults.getBotPose2d();
-                this.latestRotation = targetingResults.getBotPose3d().getRotation();
-            } else if (DriverStation.getAlliance().get() == Alliance.Red) { 
-                
-                this.latestPose = targetingResults.getBotPose2d_wpiRed(); 
-                this.latestRotation = targetingResults.getBotPose3d_wpiRed().getRotation();
-            } else { 
-                
-                this.latestPose = targetingResults.getBotPose2d_wpiBlue(); 
-                this.latestRotation = targetingResults.getBotPose3d_wpiBlue().getRotation();
-            }
+            if (!DriverStation.getAlliance().isPresent()) { this.latestPose = targetingResults.getBotPose2d(); } 
+            else if (DriverStation.getAlliance().get() == Alliance.Red) { this.latestPose = targetingResults.getBotPose2d_wpiRed(); } 
+            else { this.latestPose = targetingResults.getBotPose2d_wpiBlue(); }
 
             this.latestDelay = targetingResults.latency_capture + targetingResults.latency_pipeline;
             this.usageTimer.restart();
@@ -67,8 +55,6 @@ public class Limelight extends SubsystemBase {
     }
 
     public Pose2d getLatestPose () { return this.latestPose; }
-    public Rotation3d getLatestRotation () { return this.latestRotation; }
     public double getLatestDelay () { return this.latestDelay; }
-
     public boolean areValidMeasurements () { return this.validMeasurements; }
 }

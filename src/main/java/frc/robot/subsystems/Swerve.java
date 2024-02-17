@@ -11,7 +11,6 @@ import com.pathplanner.lib.util.ReplanningConfig;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.util.sendable.Sendable;
@@ -149,12 +148,7 @@ public class Swerve extends SubsystemBase {
     public void zeroGyro () { this.swerveDrive.zeroGyro(); }
     public void resetOdometry (Pose2d pose) { this.swerveDrive.resetOdometry(pose); }
     public void setChassisSpeeds (ChassisSpeeds chassisSpeeds) { this.swerveDrive.drive(chassisSpeeds); }
-
-    public void addVisionMeasurement (Pose2d pose2d, double timestamp, Rotation3d rotation3d) { 
-
-        this.swerveDrive.addVisionMeasurement(pose2d, timestamp);
-        this.swerveDrive.setGyroOffset(rotation3d);
-    }
+    public void addVisionMeasurement (Pose2d pose2d, double timestamp) { this.swerveDrive.addVisionMeasurement(pose2d, timestamp); }
 
     public void lock () { this.swerveDrive.lockPose(); }
     public void setBrakeMode (boolean brake) { this.swerveDrive.setMotorIdleMode(brake); }
