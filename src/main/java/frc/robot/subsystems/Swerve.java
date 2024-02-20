@@ -9,10 +9,13 @@ import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.PathPlannerLogging;
 import com.pathplanner.lib.util.ReplanningConfig;
 
+import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.math.numbers.N1;
+import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -148,7 +151,7 @@ public class Swerve extends SubsystemBase {
     public void zeroGyro () { this.swerveDrive.zeroGyro(); }
     public void resetOdometry (Pose2d pose) { this.swerveDrive.resetOdometry(pose); }
     public void setChassisSpeeds (ChassisSpeeds chassisSpeeds) { this.swerveDrive.drive(chassisSpeeds); }
-    public void addVisionMeasurement (Pose2d pose2d, double timestamp) { this.swerveDrive.addVisionMeasurement(pose2d, timestamp); }
+    public void addVisionMeasurement (Pose2d pose2d, double timestamp, Matrix<N3, N1> standardDeviations) { this.swerveDrive.addVisionMeasurement(pose2d, timestamp, standardDeviations); }
 
     public void lock () { this.swerveDrive.lockPose(); }
     public void setBrakeMode (boolean brake) { this.swerveDrive.setMotorIdleMode(brake); }
