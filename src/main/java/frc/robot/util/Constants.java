@@ -2,10 +2,7 @@ package frc.robot.util;
 
 import java.util.List;
 
-import edu.wpi.first.math.VecBuilder;
-import edu.wpi.first.math.Vector;
 import edu.wpi.first.math.geometry.Translation3d;
-import edu.wpi.first.math.numbers.N3;
 import edu.wpi.first.units.Units;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Config;
 import swervelib.math.Matter;
@@ -43,8 +40,6 @@ public final class Constants {
 
         public static final double REPLANNING_TOTAL_ERROR = 0.15; // Total Error to Replan Path [m]
         public static final double REPLANNING_ERROR_SPIKE = 0.1; // Spike in Error to Replan Path [m / 20ms]
-
-        public static final Vector<N3> LIMELIGHT_DEFAULT_DEVIATIONS = VecBuilder.fill(0.3, 0.3, 0.3);
 
         public static final Config DRIVE_SYSID_CONFIG = new Config(
             Units.Volts.of(1.5).per(Units.Second),

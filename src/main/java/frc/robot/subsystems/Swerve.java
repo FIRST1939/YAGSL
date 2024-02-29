@@ -10,6 +10,7 @@ import com.pathplanner.lib.util.PathPlannerLogging;
 import com.pathplanner.lib.util.ReplanningConfig;
 
 import edu.wpi.first.math.Matrix;
+import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -142,6 +143,7 @@ public class Swerve extends SubsystemBase {
         );
     }
 
+    public SwerveDrivePoseEstimator getPoseEstimator () { return this.swerveDrive.swerveDrivePoseEstimator; }
     public Rotation2d getHeading () { return this.swerveDrive.getYaw(); }
     public Pose2d getPose () { return this.swerveDrive.getPose(); }
 
